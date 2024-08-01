@@ -33,7 +33,7 @@ async def add_flower(flowers :Predict):
 async def predict_flower(obj_id: str):
     
     try:
-        await data = iris_test.find_one({'_id' : ObjectId(obj_id)})
+        data = await iris_test.find_one({'_id' : ObjectId(obj_id)})
         return {'The flower belongs to the class' : iris_predict(get_data(data))}
     
     except Exception as e:
@@ -45,7 +45,7 @@ async def predict_flower(obj_id: str):
 async def id_get(obj_id:str):
     
     try:
-        await data = iris_test.find_one({'_id':ObjectId(obj_id)})
+        data = await iris_test.find_one({'_id':ObjectId(obj_id)})
         if not data:
             return HTTPException(status_code = 404, detail = "Id doesn't exist")
         return get_data(data)
